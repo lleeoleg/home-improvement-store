@@ -1,0 +1,151 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+<div class="product-slider">
+    <div class="slider-container">
+        <div class="slide">
+            <img src="{% static 'img/main_photo1.jpg' %}" alt="Image 1" class="slider-image">
+        </div>
+        <div class="slide">
+            <img src="{% static 'img/main_photo2.jpg' %}" alt="Image 2" class="slider-image">
+        </div>
+    </div>
+    <div class="slider-nav">
+        <button class="prev-btn">&lsaquo;</button>
+        <button class="next-btn">&rsaquo;</button>
+    </div>
+</div>
+
+<script>
+    const slides = document.querySelectorAll('.slide');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    const sliderContainer = document.querySelector('.slider-container');
+    let currentIndex = 0;
+
+    // Показываем первый слайд
+    function showSlides(index) {
+        sliderContainer.style.transform = `translateX(-${100 * index}%)`; // Сдвигаем контейнер на 100% за раз
+    }
+
+    prevBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        showSlides(currentIndex);
+    });
+
+    nextBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % slides.length;
+        showSlides(currentIndex);
+    });
+</script>
+
+
+<div class="good1">
+    <h2>Товары из дерева</h2>
+    <div class="products-row">
+      {% for product in wood_products %}
+      <a href="{{ product.get_absolute_url }}"><div class="product-card">
+        <img src="{{ product.image.url }}" alt="{{ product.name }}">
+        <h3>{{ product.name }}</h3>
+        <p>{{ product.price }} руб.</p>
+      </div></a>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="good2">
+    <h2>Товары из Керамики</h2>
+    <div class="products-row">
+      {% for product in ceramic_products %}
+      <a href="{{ product.get_absolute_url }}"><div class="product-card">
+        <img src="{{ product.image.url }}" alt="{{ product.name }}">
+        <h3>{{ product.name }}</h3>
+        <p>{{ product.price }} руб.</p>
+      </div></a>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="good1">
+    <h2>Наклейки</h2>
+    <div class="products-row">
+      {% for product in stikers_products %}
+      <a href="{{ product.get_absolute_url }}"><div class="product-card">
+        <img src="{{ product.image.url }}" alt="{{ product.name }}">
+        <h3>{{ product.name }}</h3>
+        <p>{{ product.price }} руб.</p>
+      </div></a>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="good2">
+    <h2>Подушки</h2>
+    <div class="products-row">
+      {% for product in pillows_products %}
+      <a href="{{ product.get_absolute_url }}"><div class="product-card">
+        <img src="{{ product.image.url }}" alt="{{ product.name }}">
+        <h3>{{ product.name }}</h3>
+        <p>{{ product.price }} руб.</p>
+      </div></a>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="good1">
+    <h2>Скульптуры</h2>
+    <div class="products-row">
+      {% for product in sculptures_products %}
+      <a href="{{ product.get_absolute_url }}"><div class="product-card">
+        <img src="{{ product.image.url }}" alt="{{ product.name }}">
+        <h3>{{ product.name }}</h3>
+        <p>{{ product.price }} руб.</p>
+      </div></a>
+      {% endfor %}
+    </div>
+  </div>
+
+
+  <div class="philosophy">
+    <img src="{% static 'img/our_philosophy.jpg'%}" alt="">
+    <div class="text-philosophy">
+        <h3>Наша философия</h3>
+        Мы намеревались построить компанию, которая радует людей, любящие нашу продукцию. Наше имя отражает творчество людей - ремесленников, дизайнеров и мечтателей - которые объединяются между культурами и континентами, чтобы создавать наши коллекции.
+    </div>
+  </div>
+    <!-- <section class='home d-flex flex-column'>
+        <div class="home-title d-flex flex-column align-items-center">
+            <a href="/shop" class="home-btn mt-4">ALL PRODUCTS</a>
+        </div>
+        <div class="home-recomendation">
+            <div class="rec-title mb-4">
+                <h3><span>Popular Accessories</span></h3>
+            </div>
+        </div>
+        <div class="home-cards d-flex gap-4">
+            {% for product in products %}
+                <a href="{{ product.get_absolute_url }}" class='home-card d-flex flex-column align-items-center text-center'>
+                    <h5 class="title-card">{{ product.name }}</h5>
+                    {% if product.discount %}
+                        <div class='cart-discount d-flex gap-2'>
+                            <p class='line'>{{ product.price }}</p>
+                            <p>{{ product.sell_price }}</p>
+                        </div>
+                    {% endif %}
+                    <img src="{% if product.image %} {{ product.image.url }} {% else %} {% static 'img/noimage.jpg' %} {% endif %}" class='card-img' alt="">
+                    <h5 class='title-card'>{{ product.name }}</h5>
+                    {% if product.discount %}
+                        <div class='cart-discount'>
+                            <p class='line'>{{ product.price }}</p>
+                            <p>{{ product.sell_price }}</p>
+                        </div>
+                    {% else %}
+                        <p class='price'>{{ product.price }}</p>
+                    {% endif %}
+                </a>
+            {% endfor %}
+        </div>
+    </section>
+    <img src="{% static 'img/logogot.png' %}" alt="" class="logogothic">
+    <img src="{% static 'img/subtitlee.png' %}" alt="" claass="subtitlee">-->
+{% endblock content %}      

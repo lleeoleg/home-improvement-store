@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="{% static 'img/logo2.png' %}">
+    <title>{% block title %}{% endblock title %}</title>
+    <!-- {% comment %} bootstrap {% endcomment %} -->
+    <link rel="stylesheet" href="{% static 'bootstrap\css\bootstrap.min.css' %}">
+    <!-- {% comment %} css {% endcomment %} -->
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+<body>
+<header>
+    <header class="container1">
+        <div class="top-row">
+          <div class="location">
+            <strong>+7 (495) 000-00-00</strong>
+          </div>
+          <div class="logo">
+            <a href="/"><img src="{% static 'img/logo.png' %}" alt="ZEN logo"></a>
+          </div>
+          <div class="user-actions">
+            <a href="{% url 'users:login' %}">Войти</a>
+            <a href="{% url 'users:registration' %}">Регистрация</a>
+            <a href="{% if user.is_authenticated %}{% url 'users:profile' %}{% else %}{% url 'users:login' %}{% endif %}" class="nav-a">Профиль</a>
+          </div>
+          <div class="cart">
+            <a href="{% url 'cart:cart_detail' %}"><img src="{% static 'img/shop_cart.png' %}" alt=""></a>
+            </div>
+        </div>
+    
+        <nav class="menu">
+          <a class="main-item" href="{% url 'main:product_list' %}">КАТАЛОГ ТОВАРОВ </a>
+          <a class="main-item" href="#">О МАГАЗИНЕ</a>
+          <a class="main-item" href="#">БРЕНДЫ</a>
+          <a class="main-item" href="#">ДОСТАВКА И ОПЛАТА</a>
+          <a class="main-item" href="#">НОВОСТИ</a>
+          <a class="main-item" href="#">КОНТАКТЫ</a>
+        </nav>
+        <!-- <div class="header-container d-flex">
+            <nav class="header-nav pt-4">
+                <ul class="header-list d-flex">
+                    <li>
+                        <a href="/" class="nav-a m-3">Home</a>
+                    </li>
+                    <li>
+                        <a href="/shop" class="nav-a m-3">Shop</a>
+                    </li>
+                    <li>
+                        <a href="{% if user.is_authenticated %}{% url 'users:profile' %}{% else %}{% url 'users:login' %}{% endif %}" class="nav-a m-3">Profile</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="header-logo">
+                <a href="/"><img src="{% static 'img/qwewqe.png' %}" alt="" class="heavy-logo"></a>
+            </div>
+            <div class="header-profile pt-2">
+                <a href="{% url 'cart:cart_detail' %}"><img src="{% static 'img/grob.png' %}" class="grob"></a>
+                <a href="{% url 'users:login' %}" class="m-3">LOGIN</a>
+                <a href="{% url 'users:registration' %}" class="m-3">REGISTRATION</a>
+                <p class="cart-quantity">
+                    {% with cart_quantity=cart|length %}
+                        {% if cart_quantity > 0  %}
+                            {{ cart_quantity }}
+                        {% else %}
+                            0
+                        {% endif %}
+                    {% endwith %}
+                </p>
+            </div>
+        </div> -->
+</header>
+
+
+{% block content %}
+{% endblock content %}   
+
+<!-- 
+    <img src="{% static 'img/frame1.png' %}" class='frame1' alt="">
+    <img src="{% static 'img/frame2.png' %}" class='frame2' alt="">
+    <img src="{% static 'img/frame3.png' %}" class='frame3' alt="">
+    <img src="{% static 'img/frame4.png' %}" class='frame4' alt="">
+    
+    
+
+
+    {% comment %} js for bootstrap {% endcomment %}
+    <script src="{% static 'bootstrap\js\bootstrap.bundle.min.js' %}"></script> -->
+
+<footer>
+    <div class="footer-text">
+        <span>Спокойно пишите, звоните и посещайте нас, мы любим общаться с нашими клиентами и гостями </span><br><br>
+        +7 800 000 90 01 <br>
+        info@gmail.com
+    </div>
+</footer>    
+
+</body>
+</html>
