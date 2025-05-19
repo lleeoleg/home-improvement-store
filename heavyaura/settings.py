@@ -57,16 +57,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'heavyaura.wsgi.application'
 
 
-<<<<<<< HEAD
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('POSTGRES_DB'),
-        'USER': os.environ.get('POSTGRES_USER'),
-        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
-        'HOST': os.environ.get('POSTGRES_HOST', 'db'),
-        'PORT': os.environ.get('POSTGRES_PORT', '5432'),
-=======
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
@@ -85,16 +75,10 @@ DATABASES = {
         'USER': 'postgres', 
         'PASSWORD': 'postgres',    
         'HOST': 'localhost',      
-        'PORT': '5432',                
->>>>>>> 8f64804 (new-commit)
+        'PORT': '5432',             
     }
 }
 
-
-<<<<<<< HEAD
-
-=======
->>>>>>> 8f64804 (new-commit)
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
